@@ -1,7 +1,7 @@
 import { useHttp } from 'hooks/useHttp';
 import { nanoid } from 'nanoid';
-import React from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { styled } from 'styled-components';
 
@@ -10,9 +10,12 @@ const MovieDetails = () => {
 
   const { data } = useHttp(getMovieDetails, id);
   const { original_title, overview, poster_path, release_date, genres } = data;
+  const location = useLocation();
+  const goBackRef = useRef(location.state?.from || '/');
 
   return (
     <StyledWrapper style={{ padding: '0 20px' }}>
+      <Link to={goBackRef.current}>Go back</Link>
       <div>
         <img
           width={280}

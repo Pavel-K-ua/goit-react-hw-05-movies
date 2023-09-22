@@ -1,25 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
-import {
-  getMovieCredits,
-  getMovieDetails,
-  getMovieReviews,
-  getTrending,
-  searchMovies,
-} from 'services/api';
-import Home from './Home/Home';
+import { lazy } from 'react';
 import Layout from './Layout/Layout';
+import Home from './Home/Home';
 import Movies from './Movies/Movies';
 import MovieDetails from './MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
 
-export const App = () => {
-  // getTrending();
-  // searchMovies('batman');
-  // getMovieDetails('2661');
-  // getMovieCredits('2661');
-  // getMovieReviews('268');
+// const Home = lazy(() => import('./Home/Home'));
+// const Movies = lazy(() => import('./Movies/Movies.jsx'));
+// const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+// const Cast = lazy(() => import('./Cast/Cast'));
+// const Reviews = lazy(() => import('./Reviews/Reviews'));
 
+export const App = () => {
   return (
     <>
       <Routes>

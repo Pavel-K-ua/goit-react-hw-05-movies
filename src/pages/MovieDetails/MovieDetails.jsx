@@ -1,6 +1,6 @@
 import { useHttp } from 'hooks/useHttp';
 import { nanoid } from 'nanoid';
-import React, { useRef } from 'react';
+import React, { Suspense, useRef } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { styled } from 'styled-components';
@@ -44,7 +44,9 @@ const MovieDetails = () => {
         </ul>
         <hr />
       </div>
-      <Outlet />
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <Outlet />
+      </Suspense>
     </StyledWrapper>
   );
 };

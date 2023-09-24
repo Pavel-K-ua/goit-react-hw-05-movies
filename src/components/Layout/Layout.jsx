@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -15,14 +16,16 @@ const Layout = () => {
         </Links>
       </nav>
       <hr />
-      <OtletWrapper>
-        <Outlet />
-      </OtletWrapper>
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <OutletWrapper>
+          <Outlet />
+        </OutletWrapper>
+      </Suspense>
     </>
   );
 };
 
-const OtletWrapper = styled.div`
+const OutletWrapper = styled.div`
   min-height: 100vh;
   padding: 10px 45px;
 `;
